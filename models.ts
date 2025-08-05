@@ -24,7 +24,7 @@ const cacheMiddleware: LanguageModelV2Middleware = {
   },
 };
 
-interface RunnableModel {
+export interface RunnableModel {
   name: string;
   llm: LanguageModel;
 }
@@ -36,7 +36,7 @@ export const modelsToRun: RunnableModel[] = wrapWithCache([
   },
 ]);
 
-interface SystemPrompt {
+export interface SystemPrompt {
   name: string;
   prompt: string;
 }
@@ -64,4 +64,9 @@ function wrapWithCache(runnableModels: RunnableModel[]): RunnableModel[] {
       middleware: cacheMiddleware,
     }),
   }));
+}
+
+export interface QuestionFile {
+  category: string;
+  questions: Array<{ question: string }>;
 }

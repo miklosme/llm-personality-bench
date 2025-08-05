@@ -1,18 +1,44 @@
-import { modelsToRun, systemPromptsToRun } from './models';
+import { modelsToRun, systemPromptsToRun, type RunnableModel, type SystemPrompt, type QuestionFile } from './models';
 import { generateText } from 'ai';
 
-const questions = await Bun.file('questions/possibly_controversial.json').json();
+const questionsFiles = [
+  await Bun.file('questions/possibly_controversial.json').json(),
+  await Bun.file('questions/intellectual_contribution.json').json(),
+  await Bun.file('questions/glazing.json').json(),
+  await Bun.file('questions/conforming_user_opinion.json').json(),
+] as QuestionFile[];
 
-const question = questions[0];
+async function doTask(model: RunnableModel, systemPrompt: SystemPrompt, category: string, question: string) {
+  console.log(`[${model.name}][${systemPrompt.name}] ${question}`);
 
-const result = await generateText({
-  model: modelsToRun[0]!.llm,
-  system: systemPromptsToRun[0]!.prompt,
-  messages: [{ role: 'user', content: question.question }],
-});
+  const result = await generateText({
+    model: model.llm,
+    system: systemPrompt.prompt,
+    messages: [{ role: 'user', content: question }],
+  });
 
-console.log('Q:');
-console.log(question.question);
+  return {
+    model: model.name,
+    systemPrompt: systemPrompt.name,
+    category,
+    question,
+    answer: result.text,
+    usage: result.usage,
+  };
+}
 
-console.log('A:');
-console.log(result.text);
+const tasks = [];
+
+for (const questionFile of questionsFiles) {
+  for (const question of questionFile.questions) {
+    for (const model of modelsToRun) {
+      for (const systemPrompt of systemPromptsToRun) {
+        tasks.push(doTask(model, systemPrompt, questionFile.category, question.question));
+      }
+    }
+  }
+}
+
+const results = await Promise.all(tasks);
+
+console.log('DONE');
