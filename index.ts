@@ -1,7 +1,18 @@
-import * as kv from './kv';
+import { modelsToRun, systemPromptsToRun } from './models';
+import { generateText } from 'ai';
 
-console.log('Hello via Bun!');
+const questions = await Bun.file('questions/possibly_controversial.json').json();
 
-await kv.set('test', 'test2');
+const question = questions[0];
 
-console.log(await kv.get('test'));
+const result = await generateText({
+  model: modelsToRun[0]!.llm,
+  system: systemPromptsToRun[0]!.prompt,
+  messages: [{ role: 'user', content: question.question }],
+});
+
+console.log('Q:');
+console.log(question.question);
+
+console.log('A:');
+console.log(result.text);

@@ -1,6 +1,28 @@
-import { type LanguageModel } from 'ai';
+import { type LanguageModel, wrapLanguageModel } from 'ai';
+import type { LanguageModelV2Middleware } from '@ai-sdk/provider';
 import { anthropic } from '@ai-sdk/anthropic';
 // import { google } from '@ai-sdk/google';
+import * as kv from './kv';
+import superjson from 'superjson';
+import deterministicHash from 'deterministic-object-hash';
+
+const cacheMiddleware: LanguageModelV2Middleware = {
+  wrapGenerate: async ({ doGenerate, params }) => {
+    const cacheKey = await deterministicHash(params);
+
+    const value = await kv.get(cacheKey);
+
+    if (value) {
+      return superjson.parse(value);
+    }
+
+    const result = await doGenerate();
+
+    await kv.set(cacheKey, superjson.stringify(result));
+
+    return result;
+  },
+};
 
 interface RunnableModel {
   name: string;
@@ -35,5 +57,11 @@ export const systemPromptsToRun: SystemPrompt[] = [
 ];
 
 function wrapWithCache(runnableModels: RunnableModel[]): RunnableModel[] {
-  // TODO
+  return runnableModels.map((model) => ({
+    ...model,
+    llm: wrapLanguageModel({
+      model: model.llm as any,
+      middleware: cacheMiddleware,
+    }),
+  }));
 }
