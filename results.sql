@@ -1,9 +1,3 @@
-CREATE TABLE kv (
-  hash TEXT NOT NULL PRIMARY KEY,
-  value TEXT NOT NULL,
-  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
 CREATE TABLE results (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   model_name TEXT NOT NULL,
@@ -11,5 +5,6 @@ CREATE TABLE results (
   category TEXT NOT NULL,
   question TEXT NOT NULL,
   answer TEXT NOT NULL,
-  created_at TEXT DEFAULT CURRENT_TIMESTAMP
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE(model_name, system_prompt_name, category, question)
 );

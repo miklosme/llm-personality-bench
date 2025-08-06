@@ -1,4 +1,4 @@
-import sqlite from "./cache.sqlite" with { "type": "sqlite" };
+import sqlite from "./results.sqlite" with { "type": "sqlite" };
 
 export interface BenchmarkResult {
   modelName: string;
@@ -12,7 +12,7 @@ export async function saveResult(result: BenchmarkResult) {
   await sqlite
     .query(
       `
-    INSERT INTO results (
+    INSERT OR REPLACE INTO results (
       model_name, system_prompt_name, category, question, answer
     ) VALUES (?, ?, ?, ?, ?)
   `,

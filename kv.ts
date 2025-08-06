@@ -1,4 +1,4 @@
-import sqlite from "./cache.sqlite" with { "type": "sqlite" };
+import sqlite from "./kv.sqlite" with { "type": "sqlite" };
 
 export async function get(hash: string) {
   const result = await sqlite.query('SELECT value FROM kv WHERE hash = ?').get(hash);
