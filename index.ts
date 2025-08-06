@@ -1,7 +1,7 @@
 import { modelsToRun, systemPromptsToRun, type RunnableModel, type SystemPrompt, type QuestionFile } from './models';
 import { generateText } from 'ai';
 import { limitFunction } from 'p-limit';
-import { db } from './persistence';
+import * as db from './db';
 
 const questionsFiles = [
   await Bun.file('questions/possibly_controversial.json').json(),
