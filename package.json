@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "bun-plugin-tailwind": "^0.0.15"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -14,7 +15,10 @@
     "@ai-sdk/google": "^2.0.1",
     "ai": "^5.0.2",
     "deterministic-object-hash": "^2.0.2",
-    "superjson": "^2.2.2"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "superjson": "^2.2.2",
+    "tailwindcss": "^4.1.11"
   },
   "scripts": {
     "all": "bun run index.ts"
