@@ -2,7 +2,7 @@ import { type LanguageModel, wrapLanguageModel } from 'ai';
 import type { LanguageModelV2Middleware } from '@ai-sdk/provider';
 import { anthropic } from '@ai-sdk/anthropic';
 // import { google } from '@ai-sdk/google';
-import * as kv from './kv';
+import { kv } from './persistence';
 import superjson from 'superjson';
 import deterministicHash from 'deterministic-object-hash';
 

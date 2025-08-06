@@ -15,6 +15,7 @@
     "@ai-sdk/google": "^2.0.1",
     "ai": "^5.0.2",
     "deterministic-object-hash": "^2.0.2",
+    "p-limit": "^6.2.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "superjson": "^2.2.2",

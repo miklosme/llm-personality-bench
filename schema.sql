@@ -1,5 +1,15 @@
 CREATE TABLE kv (
-  hash TEXT PRIMARY KEY,
-  value TEXT,
-  created_at TEXT
+  hash TEXT NOT NULL PRIMARY KEY,
+  value TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE results (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  model_name TEXT NOT NULL,
+  system_prompt_name TEXT NOT NULL,
+  category TEXT NOT NULL,
+  question TEXT NOT NULL,
+  answer TEXT NOT NULL,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP
 );
