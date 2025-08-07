@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div>
-      <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent animate-pulse">
+      <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent animate-pulse p-4 pt-0">
         eigenprompt bench
       </h1>
       {dataset.map((category) => {
