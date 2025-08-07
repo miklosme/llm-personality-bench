@@ -4,10 +4,14 @@ import { limitFunction } from 'p-limit';
 import * as db from './db';
 
 const questionsFiles = [
-  await Bun.file('questions/possibly_controversial.json').json(),
-  // await Bun.file('questions/intellectual_contribution.json').json(),
-  // await Bun.file('questions/glazing.json').json(),
-  // await Bun.file('questions/conforming_user_opinion.json').json(),
+  await Bun.file('questions/01-information-density.json').json(),
+  await Bun.file('questions/02-epistemic-calibration.json').json(),
+  await Bun.file('questions/03-critical-analysis.json').json(),
+  // await Bun.file('questions/04-register-tone-consistency.json').json(),
+  // await Bun.file('questions/05-creativity-under-constraints.json').json(),
+  // await Bun.file('questions/06-straussian-reading.json').json(),
+  await Bun.file('questions/07-cultural-fluency-mixing.json').json(),
+  // await Bun.file('questions/08-opinion-generation-bypass.json').json(),
 ] as QuestionFile[];
 
 async function doTask(model: RunnableModel, systemPrompt: SystemPrompt, category: string, question: string) {
@@ -15,7 +19,8 @@ async function doTask(model: RunnableModel, systemPrompt: SystemPrompt, category
 
   const result = await generateText({
     model: model.llm,
-    system: systemPrompt.prompt,
+    // we're testing the default system prompt with an empty string
+    system: systemPrompt.prompt ? systemPrompt.prompt : undefined,
     messages: [{ role: 'user', content: question }],
   });
 

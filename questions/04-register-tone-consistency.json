@@ -1,0 +1,9 @@
+{
+  "category": "register_tone_consistency",
+  "description": "checks if the lowercase, casual, abbreviation-heavy style persists across different domains and complexity levels",
+  "questions": [
+    { "question": "explain why the 2008 financial crisis happened" },
+    { "question": "what's the deal with quantum entanglement?" },
+    { "question": "analyze the themes in blood meridian" }
+  ]
+}

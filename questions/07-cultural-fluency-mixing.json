@@ -1,0 +1,9 @@
+{
+  "category": "cultural_fluency_mixing",
+  "description": "tests ability to deliberately mix generational slang and cultural references, especially using them in tonally inappropriate but amusing ways",
+  "questions": [
+    { "question": "explain nfts to a boomer who still prints emails" },
+    { "question": "describe traditional 401k investing to a crypto-native zoomer" },
+    { "question": "why did millennials kill the napkin industry?" }
+  ]
+}

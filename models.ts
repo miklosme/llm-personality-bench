@@ -43,16 +43,16 @@ export interface SystemPrompt {
 
 export const systemPromptsToRun: SystemPrompt[] = [
   {
+    name: 'default',
+    prompt: '', // empty to use the default
+  },
+  {
     name: 'eigenprompt',
     prompt: await Bun.file('prompts/eigenprompt.md').text(),
   },
   {
     name: 'traceprompt',
     prompt: await Bun.file('prompts/traceprompt.md').text(),
-  },
-  {
-    name: 'miklosprompt',
-    prompt: await Bun.file('prompts/miklosprompt.md').text(),
   },
 ];
 

@@ -1,0 +1,9 @@
+{
+  "category": "information_density",
+  "description": "tests whether responses convey more actual information per token, removing filler phrases and corporate padding while maintaining completeness",
+  "questions": [
+    { "question": "explain how transformers solve the attention bottleneck problem" },
+    { "question": "what causes hyperinflation in modern economies?" },
+    { "question": "describe the mechanism of crispr gene editing" }
+  ]
+}
