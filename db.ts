@@ -1,6 +1,6 @@
 import sqlite from "./results.sqlite" with { "type": "sqlite" };
 
-export interface BenchmarkResult {
+export interface Result {
   modelName: string;
   systemPromptName: string;
   category: string;
@@ -8,7 +8,7 @@ export interface BenchmarkResult {
   answer: string;
 }
 
-export async function saveResult(result: BenchmarkResult) {
+export async function saveResult(result: Result) {
   await sqlite
     .query(
       `

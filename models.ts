@@ -65,8 +65,3 @@ function wrapWithCache(runnableModels: RunnableModel[]): RunnableModel[] {
     }),
   }));
 }
-
-export interface QuestionFile {
-  category: string;
-  questions: Array<{ question: string }>;
-}
