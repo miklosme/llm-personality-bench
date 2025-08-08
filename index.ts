@@ -1,4 +1,9 @@
-import { modelsToRun, systemPromptsToRun, type RunnableModel, type SystemPrompt } from './models';
+import {
+  modelsToRun,
+  systemPromptsToRun,
+  type RunnableModel,
+  type SystemPrompt,
+} from './models';
 import { generateText } from 'ai';
 import { limitFunction } from 'p-limit';
 import * as db from './db';

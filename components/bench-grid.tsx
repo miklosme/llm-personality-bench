@@ -3,18 +3,24 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { type Result } from '@/db';
 import { Info } from 'lucide-react';
 
-export function BenchGrid({ title, description, results }: { title: string; description: string; results: Result[] }) {
-  // extract unique questions and system prompts
-  const questions = [...new Set(results.map((r) => r.question))];
-  const systemPrompts = [...new Set(results.map((r) => r.systemPromptName))];
-
-  // create lookup for quick access to answers
-  const answerLookup = results.reduce((acc, result) => {
-    const key = `${result.question}|${result.systemPromptName}`;
-    acc[key] = result.answer;
-    return acc;
-  }, {} as Record<string, string>);
-
+export function BenchGrid({
+  title,
+  description,
+  questions,
+  allCombinations,
+  results,
+}: {
+  title: string;
+  description: string;
+  questions: Array<{
+    question: string;
+  }>;
+  allCombinations: Array<{
+    modelName: string;
+    systemPromptName: string;
+  }>;
+  results: Result[];
+}) {
   return (
     <TooltipProvider>
       <div className="bg-white pb-2 border-b border-gray-200">
@@ -43,19 +49,15 @@ export function BenchGrid({ title, description, results }: { title: string; desc
           <div
             className="grid gap-1"
             style={{
-              gridTemplateColumns: `60px repeat(${systemPrompts.length}, minmax(200px, 1fr))`,
+              gridTemplateColumns: `60px repeat(${allCombinations.length}, minmax(200px, 1fr))`,
             }}
           >
             {/* Header Row */}
             <div className=""></div> {/* Empty corner */}
-            {systemPrompts.map((prompt) => (
-              <div key={prompt} className="flex items-end justify-center pt-2">
-                <div
-                  className="text-sm font-medium text-gray-700 whitespace-nowrap"
-                  style={{ transformOrigin: 'bottom center' }}
-                >
-                  {prompt}
-                </div>
+            {allCombinations.map((combination, index) => (
+              <div key={index} className="flex flex-col items-center pt-2">
+                <Badge variant="secondary">{combination.systemPromptName}</Badge>
+                <div className="text-xs text-gray-500 whitespace-nowrap">{combination.modelName}</div>
               </div>
             ))}
             {/* Question Rows */}
@@ -69,19 +71,27 @@ export function BenchGrid({ title, description, results }: { title: string; desc
                     </div>
                   </TooltipTrigger>
                   <TooltipContent side="right" className="max-w-xs">
-                    <p>{question}</p>
+                    <p>{question.question}</p>
                   </TooltipContent>
                 </Tooltip>
 
-                {/* Answer Cells */}
-                {systemPrompts.map((prompt) => {
-                  const answer = answerLookup[`${question}|${prompt}`] || 'No response';
+                {allCombinations.map((combination, index) => {
+                  const result = results.find(
+                    (r) =>
+                      r.modelName === combination.modelName &&
+                      r.systemPromptName === combination.systemPromptName &&
+                      r.question === question.question,
+                  );
                   return (
                     <div
-                      key={prompt}
+                      key={index}
                       className="h-24 border border-gray-200 p-2 text-xs leading-tight overflow-hidden cursor-pointer transition-all duration-200"
                     >
-                      <div className="text-gray-700">{answer}</div>
+                      {result ? (
+                        <div className="text-gray-700">{result.answer}</div>
+                      ) : (
+                        <div className="text-gray-500">No response</div>
+                      )}
                     </div>
                   );
                 })}

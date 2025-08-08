@@ -36,6 +36,17 @@ export const modelsToRun: RunnableModel[] = wrapWithCache([
   },
 ]);
 
+export interface Combination {
+  modelName: string;
+  systemPromptName: string;
+}
+
+export const getAllCombinations = (): Combination[] => {
+  return modelsToRun.flatMap((model) => {
+    return systemPromptsToRun.map((systemPrompt) => ({ modelName: model.name, systemPromptName: systemPrompt.name }));
+  });
+};
+
 export interface SystemPrompt {
   name: string;
   prompt: string;
