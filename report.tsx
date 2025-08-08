@@ -23,10 +23,9 @@ function App() {
       {dataset.map((category) => {
         const resultsInCategory = results.filter((result) => result.categoryName === category.name);
         return (
-          <BenchGrid key={category.name} title={category.title} results={resultsInCategory} />
+          <BenchGrid key={category.name} title={category.title} description={category.description} results={resultsInCategory} />
         );
       })}
-      <code className="text-sm text-gray-500 whitespace-pre-wrap">{JSON.stringify(results, null, 2)}</code>
     </div>
   );
 }

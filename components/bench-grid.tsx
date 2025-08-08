@@ -1,8 +1,9 @@
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { type Result } from '@/db';
+import { Info } from 'lucide-react';
 
-export function BenchGrid({ title, results }: { title: string; results: Result[] }) {
+export function BenchGrid({ title, description, results }: { title: string; description: string; results: Result[] }) {
   // extract unique questions and system prompts
   const questions = [...new Set(results.map((r) => r.question))];
   const systemPrompts = [...new Set(results.map((r) => r.systemPromptName))];
@@ -20,7 +21,19 @@ export function BenchGrid({ title, results }: { title: string; results: Result[]
         {/* Category Header */}
         <div className="bg-gray-100 px-6 py-4 border-b">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
+            <div className="flex items-center gap-2">
+              <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="text-gray-400 cursor-help">
+                    <Info className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent side="right" className="max-w-sm">
+                  <p>{description}</p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
             {/* <Badge variant="secondary">{questions.length} questions</Badge> */}
           </div>
         </div>
