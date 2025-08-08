@@ -45,7 +45,7 @@ export function BenchGrid({
         </div>
 
         {/* Grid Container */}
-        <div className="p-2 overflow-x-auto">
+        <div className="p-1 overflow-x-auto">
           <div
             className="grid gap-1"
             style={{
@@ -55,7 +55,7 @@ export function BenchGrid({
             {/* Header Row */}
             <div className=""></div> {/* Empty corner */}
             {allCombinations.map((combination, index) => (
-              <div key={index} className="flex flex-col items-center pt-2">
+              <div key={index} className="flex flex-col items-center py-2">
                 <Badge variant="secondary">{combination.systemPromptName}</Badge>
                 <div className="text-xs text-gray-500 whitespace-nowrap">{combination.modelName}</div>
               </div>

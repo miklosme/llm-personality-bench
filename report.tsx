@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { getAllResults, type Result } from './db' with { type: 'macro' };
-import { getDataset, type Dataset } from './questions' with { type: 'macro' };
 import { getAllCombinations, type Combination } from './models' with { type: 'macro' };
 import { BenchGrid } from '@/components/bench-grid';
+import dataset from './questions.json';
 
 ReactDOM.createRoot(document.getElementById('app')!).render(
   <React.StrictMode>
@@ -15,7 +15,6 @@ const allCombinations = getAllCombinations() as any as Combination[];
 
 function App() {
   const results = getAllResults() as any as Result[];
-  const dataset = getDataset() as any as Dataset[];
 
   return (
     <div>

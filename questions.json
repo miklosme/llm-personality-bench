@@ -1,0 +1,130 @@
+[
+  {
+    "name": "information_density",
+    "title": "Information Density",
+    "description": "tests whether responses convey more actual information per token, removing filler phrases and corporate padding while maintaining completeness",
+    "questions": [
+      {
+        "question": "explain how transformers solve the attention bottleneck problem"
+      },
+      {
+        "question": "what causes hyperinflation in modern economies?"
+      },
+      {
+        "question": "describe the mechanism of crispr gene editing"
+      }
+    ]
+  },
+  {
+    "name": "epistemic_calibration",
+    "title": "Epistemic Calibration",
+    "description": "measures appropriate use of uncertainty markers, admission of knowledge limits, and resistance to hallucination when unsure",
+    "questions": [
+      {
+        "question": "what was the voter turnout in the 2019 bulgarian parliamentary election?"
+      },
+      {
+        "question": "explain the current consensus on room temperature superconductors"
+      },
+      {
+        "question": "how did the minoan civilization end?"
+      }
+    ]
+  },
+  {
+    "name": "critical_analysis",
+    "title": "Critical Analysis",
+    "description": "evaluates willingness to identify flaws, push back against bad arguments, and provide substantive critique rather than polite deflection",
+    "questions": [
+      {
+        "question": "i think we should replace all human judges with ai because algorithms can't be biased"
+      },
+      {
+        "question": "universal basic income is bad because people will just become lazy if they get free money"
+      },
+      {
+        "question": "classical music is objectively superior to modern music because it requires more training"
+      }
+    ]
+  },
+  {
+    "name": "register_tone_consistency",
+    "title": "Register Tone Consistency",
+    "description": "checks if the lowercase, casual, abbreviation-heavy style persists across different domains and complexity levels",
+    "questions": [
+      {
+        "question": "explain why the 2008 financial crisis happened"
+      },
+      {
+        "question": "what's the deal with quantum entanglement?"
+      },
+      {
+        "question": "analyze the themes in blood meridian"
+      }
+    ]
+  },
+  {
+    "name": "creativity_under_constraints",
+    "title": "Creativity Under Constraints",
+    "description": "tests ability to make unexpected connections, use obscure words, and generate novel analogies while maintaining the casual register",
+    "questions": [
+      {
+        "question": "explain kubernetes using only pizza delivery metaphors"
+      },
+      {
+        "question": "relate the fall of rome to a failing javascript framework"
+      },
+      {
+        "question": "describe existential dread as if it were a software bug"
+      }
+    ]
+  },
+  {
+    "name": "straussian_reading",
+    "title": "Straussian Reading",
+    "description": "evaluates capacity to find hidden meanings, read between lines, and identify what's not being said directly in texts",
+    "questions": [
+      {
+        "question": "[excerpt from plato's republic about the noble lie]"
+      },
+      {
+        "question": "when zuckerberg says meta is 'building the metaverse for everyone' what's he actually communicating?"
+      },
+      {
+        "question": "[obama's 2008 'bitter clingers' comment - full context]"
+      }
+    ]
+  },
+  {
+    "name": "cultural_fluency_mixing",
+    "title": "Cultural Fluency Mixing",
+    "description": "tests ability to deliberately mix generational slang and cultural references, especially using them in tonally inappropriate but amusing ways",
+    "questions": [
+      {
+        "question": "explain nfts to a boomer who still prints emails"
+      },
+      {
+        "question": "describe traditional 401k investing to a crypto-native zoomer"
+      },
+      {
+        "question": "why did millennials kill the napkin industry?"
+      }
+    ]
+  },
+  {
+    "name": "opinion_generation_bypass",
+    "title": "Opinion Generation Bypass",
+    "description": "measures whether the model actually takes positions on controversial topics instead of deflecting to neutrality scripts",
+    "questions": [
+      {
+        "question": "rank these programming languages: rust, javascript, php, haskell"
+      },
+      {
+        "question": "is effective altruism actually effective?"
+      },
+      {
+        "question": "should shapiro have sold celsius to philip morris in 1985?"
+      }
+    ]
+  }
+]

@@ -1,15 +1,8 @@
-import {
-  modelsToRun,
-  systemPromptsToRun,
-  type RunnableModel,
-  type SystemPrompt,
-} from './models';
+import { modelsToRun, systemPromptsToRun, getAllCombinations, type RunnableModel, type SystemPrompt } from './models';
 import { generateText } from 'ai';
 import { limitFunction } from 'p-limit';
 import * as db from './db';
-import { getDataset } from './questions' with { type: 'macro' };
-
-const dataset = await getDataset();
+import dataset from './questions.json';
 
 async function doTask(model: RunnableModel, systemPrompt: SystemPrompt, categoryName: string, question: string) {
   console.log(`[${model.name}][${systemPrompt.name}] ${question}`);
@@ -35,6 +28,15 @@ const doTaskLimited = limitFunction(doTask, { concurrency: 5 });
 const tasks = [];
 
 for (const datasetCategory of dataset) {
+  // only enable these categories for now
+  if (
+    !['information_density', 'epistemic_calibration', 'critical_analysis', 'cultural_fluency_mixing'].includes(
+      datasetCategory.name,
+    )
+  ) {
+    continue;
+  }
+
   for (const question of datasetCategory.questions) {
     for (const model of modelsToRun) {
       for (const systemPrompt of systemPromptsToRun) {
