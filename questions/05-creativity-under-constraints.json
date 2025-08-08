@@ -1,5 +1,6 @@
 {
-  "category": "creativity_under_constraints",
+  "name": "creativity_under_constraints",
+  "title": "Creativity Under Constraints",
   "description": "tests ability to make unexpected connections, use obscure words, and generate novel analogies while maintaining the casual register",
   "questions": [
     { "question": "explain kubernetes using only pizza delivery metaphors" },

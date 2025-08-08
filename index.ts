@@ -6,7 +6,7 @@ import { getDataset } from './questions' with { type: 'macro' };
 
 const dataset = await getDataset();
 
-async function doTask(model: RunnableModel, systemPrompt: SystemPrompt, category: string, question: string) {
+async function doTask(model: RunnableModel, systemPrompt: SystemPrompt, categoryName: string, question: string) {
   console.log(`[${model.name}][${systemPrompt.name}] ${question}`);
 
   const result = await generateText({
@@ -19,7 +19,7 @@ async function doTask(model: RunnableModel, systemPrompt: SystemPrompt, category
   await db.saveResult({
     modelName: model.name,
     systemPromptName: systemPrompt.name,
-    category,
+    categoryName,
     question,
     answer: result.text,
   });
@@ -33,7 +33,7 @@ for (const datasetCategory of dataset) {
   for (const question of datasetCategory.questions) {
     for (const model of modelsToRun) {
       for (const systemPrompt of systemPromptsToRun) {
-        tasks.push(doTaskLimited(model, systemPrompt, datasetCategory.category, question.question));
+        tasks.push(doTaskLimited(model, systemPrompt, datasetCategory.name, question.question));
       }
     }
   }

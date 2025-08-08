@@ -1,5 +1,7 @@
 export interface Dataset {
-  category: string;
+  name: string;
+  title: string;
+  description: string;
   questions: Array<{ question: string }>;
 }
 

@@ -3,7 +3,7 @@ import sqlite from "./results.sqlite" with { "type": "sqlite" };
 export interface Result {
   modelName: string;
   systemPromptName: string;
-  category: string;
+  categoryName: string;
   question: string;
   answer: string;
 }
@@ -17,7 +17,7 @@ export async function saveResult(result: Result) {
     ) VALUES (?, ?, ?, ?, ?)
   `,
     )
-    .run(result.modelName, result.systemPromptName, result.category, result.question, result.answer);
+    .run(result.modelName, result.systemPromptName, result.categoryName, result.question, result.answer);
 }
 
 export async function getAllResults() {
@@ -27,7 +27,7 @@ export async function getAllResults() {
     SELECT 
       model_name as modelName,
       system_prompt_name as systemPromptName,
-      category,
+      category as categoryName,
       question,
       answer,
       created_at as createdAt

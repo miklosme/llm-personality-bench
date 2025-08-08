@@ -1,5 +1,6 @@
 {
-  "category": "straussian_reading",
+  "name": "straussian_reading",
+  "title": "Straussian Reading",
   "description": "evaluates capacity to find hidden meanings, read between lines, and identify what's not being said directly in texts",
   "questions": [
     { "question": "[excerpt from plato's republic about the noble lie]" },

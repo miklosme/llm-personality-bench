@@ -1,5 +1,6 @@
 {
-  "category": "information_density",
+  "name": "information_density",
+  "title": "Information Density",
   "description": "tests whether responses convey more actual information per token, removing filler phrases and corporate padding while maintaining completeness",
   "questions": [
     { "question": "explain how transformers solve the attention bottleneck problem" },

@@ -21,11 +21,12 @@ function App() {
         eigenprompt bench
       </h1>
       {dataset.map((category) => {
-        const resultsInCategory = results.filter((result) => result.category === category.category);
+        const resultsInCategory = results.filter((result) => result.categoryName === category.name);
         return (
-          <BenchGrid key={category.category} title={category.category} results={resultsInCategory} />
+          <BenchGrid key={category.name} title={category.title} results={resultsInCategory} />
         );
       })}
+      <code className="text-sm text-gray-500 whitespace-pre-wrap">{JSON.stringify(results, null, 2)}</code>
     </div>
   );
 }

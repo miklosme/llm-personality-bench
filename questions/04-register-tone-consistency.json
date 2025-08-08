@@ -1,5 +1,6 @@
 {
-  "category": "register_tone_consistency",
+  "name": "register_tone_consistency",
+  "title": "Register Tone Consistency",
   "description": "checks if the lowercase, casual, abbreviation-heavy style persists across different domains and complexity levels",
   "questions": [
     { "question": "explain why the 2008 financial crisis happened" },
