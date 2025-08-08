@@ -1,7 +1,13 @@
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { type Result } from '@/db';
 import { Info } from 'lucide-react';
+
+// function ScrollArea({ children }: { children: React.ReactNode }) {
+//   return <div className="h-full overflow-y-auto">{children}</div>;
+// }
 
 export function BenchGrid({
   title,
@@ -83,16 +89,34 @@ export function BenchGrid({
                       r.question === question.question,
                   );
                   return (
-                    <div
-                      key={index}
-                      className="h-24 border border-gray-200 p-2 text-xs leading-tight overflow-hidden cursor-pointer transition-all duration-200"
-                    >
-                      {result ? (
-                        <div className="text-gray-700">{result.answer}</div>
-                      ) : (
-                        <div className="text-gray-500">No response</div>
-                      )}
-                    </div>
+                    <Dialog key={index}>
+                      <DialogTrigger asChild>
+                        <div className="h-24 border border-gray-200 p-2 text-xs leading-tight overflow-hidden cursor-pointer transition-all duration-200">
+                          {result ? (
+                            <div className="text-gray-700">{result.answer}</div>
+                          ) : (
+                            <div className="text-gray-500">No response</div>
+                          )}
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-[calc(100%-2rem)] sm:max-w-none w-[calc(100%-6rem)] h-[calc(100vh-6rem)] p-0">
+                        <div className="grid grid-cols-1 md:grid-cols-2 h-full divide-y md:divide-y-0 md:divide-x divide-gray-200">
+                          <ScrollArea className="h-full">
+                            <div className="p-6">
+                              <DialogHeader>
+                                <DialogTitle className="text-base">{question.question}</DialogTitle>
+                              </DialogHeader>
+                              <div className="mt-2 text-sm text-gray-800 whitespace-pre-wrap">
+                                {result ? result.answer : 'No response'}
+                              </div>
+                            </div>
+                          </ScrollArea>
+                          <ScrollArea className="h-full">
+                            <div className="p-6" />
+                          </ScrollArea>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   );
                 })}
               </div>
