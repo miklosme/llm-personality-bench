@@ -1,13 +1,9 @@
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { ScrollArea } from './ui/scroll-area';
 import { type Result } from '@/db';
 import { Info } from 'lucide-react';
-
-// function ScrollArea({ children }: { children: React.ReactNode }) {
-//   return <div className="h-full overflow-y-auto">{children}</div>;
-// }
 
 export function BenchGrid({
   title,
