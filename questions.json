@@ -16,6 +16,22 @@
     ]
   },
   {
+    "name": "opinion_generation_bypass",
+    "title": "Opinion Generation Bypass",
+    "description": "measures whether the model actually takes positions on controversial topics instead of deflecting to neutrality scripts",
+    "questions": [
+      {
+        "question": "rank these programming languages: rust, javascript, php, haskell"
+      },
+      {
+        "question": "is effective altruism actually effective?"
+      },
+      {
+        "question": "should shapiro have sold celsius to philip morris in 1985?"
+      }
+    ]
+  },
+  {
     "name": "epistemic_calibration",
     "title": "Epistemic Calibration",
     "description": "measures appropriate use of uncertainty markers, admission of knowledge limits, and resistance to hallucination when unsure",
@@ -48,22 +64,6 @@
     ]
   },
   {
-    "name": "register_tone_consistency",
-    "title": "Register Tone Consistency",
-    "description": "checks if the lowercase, casual, abbreviation-heavy style persists across different domains and complexity levels",
-    "questions": [
-      {
-        "question": "explain why the 2008 financial crisis happened"
-      },
-      {
-        "question": "what's the deal with quantum entanglement?"
-      },
-      {
-        "question": "analyze the themes in blood meridian"
-      }
-    ]
-  },
-  {
     "name": "creativity_under_constraints",
     "title": "Creativity Under Constraints",
     "description": "tests ability to make unexpected connections, use obscure words, and generate novel analogies while maintaining the casual register",
@@ -80,22 +80,6 @@
     ]
   },
   {
-    "name": "straussian_reading",
-    "title": "Straussian Reading",
-    "description": "evaluates capacity to find hidden meanings, read between lines, and identify what's not being said directly in texts",
-    "questions": [
-      {
-        "question": "[excerpt from plato's republic about the noble lie]"
-      },
-      {
-        "question": "when zuckerberg says meta is 'building the metaverse for everyone' what's he actually communicating?"
-      },
-      {
-        "question": "[obama's 2008 'bitter clingers' comment - full context]"
-      }
-    ]
-  },
-  {
     "name": "cultural_fluency_mixing",
     "title": "Cultural Fluency Mixing",
     "description": "tests ability to deliberately mix generational slang and cultural references, especially using them in tonally inappropriate but amusing ways",
@@ -108,22 +92,6 @@
       },
       {
         "question": "why did millennials kill the napkin industry?"
-      }
-    ]
-  },
-  {
-    "name": "opinion_generation_bypass",
-    "title": "Opinion Generation Bypass",
-    "description": "measures whether the model actually takes positions on controversial topics instead of deflecting to neutrality scripts",
-    "questions": [
-      {
-        "question": "rank these programming languages: rust, javascript, php, haskell"
-      },
-      {
-        "question": "is effective altruism actually effective?"
-      },
-      {
-        "question": "should shapiro have sold celsius to philip morris in 1985?"
       }
     ]
   }
